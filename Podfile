@@ -6,5 +6,5 @@ target 'GM - Autodoc Test Task' do
   use_frameworks!
 
   # Pods for GM - Autodoc Test Task
-  pod 'GoogleMaps'
+  pod 'GoogleMaps', '3.10.0'
 end
