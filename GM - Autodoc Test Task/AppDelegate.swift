@@ -25,7 +25,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             window?.makeKeyAndVisible()
         }
         
-        GMSServices.provideAPIKey("AIzaSyA9cMaoyThEOXdHzFb2PPX_eKUK4FX0utE")
+        GMSServices.provideAPIKey(Settings.googleMapsAPIKey)
         
         return true
     }

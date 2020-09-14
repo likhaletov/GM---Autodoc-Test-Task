@@ -10,4 +10,5 @@ import Foundation
 
 enum Settings {
     static let api = "https://run.mocky.io/v3/96149d36-4ce8-4d4b-a3ac-f937068a1d35"
+    static let googleMapsAPIKey = "AIzaSyA9cMaoyThEOXdHzFb2PPX_eKUK4FX0utE"
 }

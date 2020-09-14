@@ -22,6 +22,7 @@ class ScreenAssemblyImplementation: ScreenAssembly {
             networkService: networkService,
             mapsService: mapsService
         )
+        viewController.title = "Autodoc test task"
         
         return viewController
         

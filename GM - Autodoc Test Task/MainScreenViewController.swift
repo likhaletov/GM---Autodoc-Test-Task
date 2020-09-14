@@ -7,19 +7,33 @@
 //
 
 import UIKit
+import CoreLocation
 
 class MainScreenViewController: UIViewController {
 
-    let networkService: NetworkService
-    let mapsService: MapsService
+    private let networkService: NetworkService
+    private let mapsService: MapsService
+    
+    private let locationManager = CLLocationManager()
+    
+    private let mainView = MainScreenView()
+    
+    override func loadView() {
+        view = mainView
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
+        setupLocation()
     }
     
-    private func setupUI() {
-        
+    private func setupUI() {        
+    }
+    
+    private func setupLocation() {
+        locationManager.delegate = self
+        locationManager.requestWhenInUseAuthorization()
     }
     
     private func fetchLocations() {
@@ -53,5 +67,9 @@ class MainScreenViewController: UIViewController {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+}
+
+extension MainScreenViewController: CLLocationManagerDelegate {
     
 }
