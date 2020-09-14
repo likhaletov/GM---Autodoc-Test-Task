@@ -3,10 +3,11 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		90437771217519159403F6A8 /* Pods_GM___Autodoc_Test_Task.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FE6884C7A8ADE5C34905EE17 /* Pods_GM___Autodoc_Test_Task.framework */; };
 		AA4E2CC9250FDAC5007B919B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA4E2CC8250FDAC5007B919B /* AppDelegate.swift */; };
 		AA4E2CCB250FDAC5007B919B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA4E2CCA250FDAC5007B919B /* SceneDelegate.swift */; };
 		AA4E2CCD250FDAC5007B919B /* MainScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA4E2CCC250FDAC5007B919B /* MainScreenViewController.swift */; };
@@ -17,9 +18,12 @@
 		AA4E2CE1250FEFBA007B919B /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA4E2CE0250FEFBA007B919B /* Model.swift */; };
 		AA4E2CE5250FF7A7007B919B /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA4E2CE4250FF7A7007B919B /* NetworkService.swift */; };
 		AA4E2CE7250FF8C8007B919B /* ScreenAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA4E2CE6250FF8C8007B919B /* ScreenAssembly.swift */; };
+		AA4E2CEA25100F29007B919B /* MapsServiceImplementation.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA4E2CE925100F29007B919B /* MapsServiceImplementation.swift */; };
+		AA4E2CEC25100F31007B919B /* MapsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA4E2CEB25100F31007B919B /* MapsService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		02B0174EA1EF5FE8277AF50A /* Pods-GM - Autodoc Test Task.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GM - Autodoc Test Task.release.xcconfig"; path = "Target Support Files/Pods-GM - Autodoc Test Task/Pods-GM - Autodoc Test Task.release.xcconfig"; sourceTree = "<group>"; };
 		AA4E2CC5250FDAC5007B919B /* GM - Autodoc Test Task.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "GM - Autodoc Test Task.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AA4E2CC8250FDAC5007B919B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AA4E2CCA250FDAC5007B919B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -32,6 +36,10 @@
 		AA4E2CE0250FEFBA007B919B /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		AA4E2CE4250FF7A7007B919B /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		AA4E2CE6250FF8C8007B919B /* ScreenAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenAssembly.swift; sourceTree = "<group>"; };
+		AA4E2CE925100F29007B919B /* MapsServiceImplementation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapsServiceImplementation.swift; sourceTree = "<group>"; };
+		AA4E2CEB25100F31007B919B /* MapsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapsService.swift; sourceTree = "<group>"; };
+		C67DF91BA4D891ECC29AB2DA /* Pods-GM - Autodoc Test Task.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GM - Autodoc Test Task.debug.xcconfig"; path = "Target Support Files/Pods-GM - Autodoc Test Task/Pods-GM - Autodoc Test Task.debug.xcconfig"; sourceTree = "<group>"; };
+		FE6884C7A8ADE5C34905EE17 /* Pods_GM___Autodoc_Test_Task.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = "Pods_GM___Autodoc_Test_Task.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -39,17 +47,37 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				90437771217519159403F6A8 /* Pods_GM___Autodoc_Test_Task.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		61CFF0DED90C32F97F5D8C30 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				C67DF91BA4D891ECC29AB2DA /* Pods-GM - Autodoc Test Task.debug.xcconfig */,
+				02B0174EA1EF5FE8277AF50A /* Pods-GM - Autodoc Test Task.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		6E77DF8E65E49EDE8C576263 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				FE6884C7A8ADE5C34905EE17 /* Pods_GM___Autodoc_Test_Task.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		AA4E2CBC250FDAC4007B919B = {
 			isa = PBXGroup;
 			children = (
 				AA4E2CC7250FDAC5007B919B /* GM - Autodoc Test Task */,
 				AA4E2CC6250FDAC5007B919B /* Products */,
+				61CFF0DED90C32F97F5D8C30 /* Pods */,
+				6E77DF8E65E49EDE8C576263 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -81,10 +109,28 @@
 		AA4E2CE3250FF5A0007B919B /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				AA4E2CE825100F00007B919B /* NetworkService */,
+				AA4E2CED25100F5D007B919B /* MapsService */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		AA4E2CE825100F00007B919B /* NetworkService */ = {
+			isa = PBXGroup;
+			children = (
 				AA4E2CDE250FEAB0007B919B /* NetworkServiceImplementation.swift */,
 				AA4E2CE4250FF7A7007B919B /* NetworkService.swift */,
 			);
-			path = Services;
+			path = NetworkService;
+			sourceTree = "<group>";
+		};
+		AA4E2CED25100F5D007B919B /* MapsService */ = {
+			isa = PBXGroup;
+			children = (
+				AA4E2CE925100F29007B919B /* MapsServiceImplementation.swift */,
+				AA4E2CEB25100F31007B919B /* MapsService.swift */,
+			);
+			path = MapsService;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -94,9 +140,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = AA4E2CD9250FDAC7007B919B /* Build configuration list for PBXNativeTarget "GM - Autodoc Test Task" */;
 			buildPhases = (
+				4FFA4BF4587456C99B0F6674 /* [CP] Check Pods Manifest.lock */,
 				AA4E2CC1250FDAC5007B919B /* Sources */,
 				AA4E2CC2250FDAC5007B919B /* Frameworks */,
 				AA4E2CC3250FDAC5007B919B /* Resources */,
+				23FE1B455C242687A3C6F2A6 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -152,6 +200,48 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		23FE1B455C242687A3C6F2A6 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-GM - Autodoc Test Task/Pods-GM - Autodoc Test Task-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-GM - Autodoc Test Task/Pods-GM - Autodoc Test Task-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-GM - Autodoc Test Task/Pods-GM - Autodoc Test Task-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		4FFA4BF4587456C99B0F6674 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-GM - Autodoc Test Task-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		AA4E2CC1250FDAC5007B919B /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -161,7 +251,9 @@
 				AA4E2CCD250FDAC5007B919B /* MainScreenViewController.swift in Sources */,
 				AA4E2CC9250FDAC5007B919B /* AppDelegate.swift in Sources */,
 				AA4E2CE1250FEFBA007B919B /* Model.swift in Sources */,
+				AA4E2CEA25100F29007B919B /* MapsServiceImplementation.swift in Sources */,
 				AA4E2CDD250FDBD7007B919B /* Settings.swift in Sources */,
+				AA4E2CEC25100F31007B919B /* MapsService.swift in Sources */,
 				AA4E2CCB250FDAC5007B919B /* SceneDelegate.swift in Sources */,
 				AA4E2CE5250FF7A7007B919B /* NetworkService.swift in Sources */,
 				AA4E2CE7250FF8C8007B919B /* ScreenAssembly.swift in Sources */,
@@ -298,6 +390,7 @@
 		};
 		AA4E2CDA250FDAC7007B919B /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C67DF91BA4D891ECC29AB2DA /* Pods-GM - Autodoc Test Task.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -317,6 +410,7 @@
 		};
 		AA4E2CDB250FDAC7007B919B /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 02B0174EA1EF5FE8277AF50A /* Pods-GM - Autodoc Test Task.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;

@@ -14,8 +14,16 @@ protocol ScreenAssembly: AnyObject {
 
 class ScreenAssemblyImplementation: ScreenAssembly {
     static func assemblyMainScreen() -> UIViewController {
+        
         let networkService = NetworkServiceImplementation()
-        let viewController = MainScreenViewController(networkService: networkService)
+        let mapsService = MapsServiceImplementation()
+        
+        let viewController = MainScreenViewController(
+            networkService: networkService,
+            mapsService: mapsService
+        )
+        
         return viewController
+        
     }
 }

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import GoogleMaps
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -20,9 +21,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             let rootVC = ScreenAssemblyImplementation.assemblyMainScreen()
             window = UIWindow()
             window?.bounds = UIScreen.main.bounds
-            window?.rootViewController = rootVC
+            window?.rootViewController = UINavigationController(rootViewController: rootVC)
             window?.makeKeyAndVisible()
         }
+        
+        GMSServices.provideAPIKey("AIzaSyA9cMaoyThEOXdHzFb2PPX_eKUK4FX0utE")
+        
         return true
     }
 

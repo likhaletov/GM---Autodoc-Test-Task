@@ -11,10 +11,10 @@ import UIKit
 class MainScreenViewController: UIViewController {
 
     let networkService: NetworkService
+    let mapsService: MapsService
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        fetchLocations()
         setupUI()
     }
     
@@ -41,8 +41,12 @@ class MainScreenViewController: UIViewController {
         }
     }
 
-    init(networkService: NetworkService) {
+    init(
+        networkService: NetworkService,
+        mapsService: MapsService
+    ) {
         self.networkService = networkService
+        self.mapsService = mapsService
         super.init(nibName: nil, bundle: nil)
     }
     
