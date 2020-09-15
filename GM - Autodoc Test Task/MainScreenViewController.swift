@@ -8,27 +8,70 @@
 
 import UIKit
 import CoreLocation
+import GoogleMaps
 
 class MainScreenViewController: UIViewController {
-
+    
     private let networkService: NetworkService
     private let mapsService: MapsService
-    
     private let locationManager = CLLocationManager()
     
     private let mainView = MainScreenView()
+    
+    private var dataSource: Users = []
     
     override func loadView() {
         view = mainView
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        setupUI()
-        setupLocation()
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        super.traitCollectionDidChange(previousTraitCollection)
+        
+        if #available(iOS 12.0, *) {
+            let userInterfaceStyle = traitCollection.userInterfaceStyle
+            switch userInterfaceStyle {
+            case .light:
+                mainView.mapView.mapStyle = nil
+            case .dark:
+                activateDarkScheme()
+            default:
+                mainView.mapView.mapStyle = nil
+            }
+        }
     }
     
-    private func setupUI() {        
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        if #available(iOS 12.0, *) {
+            setupInitScheme()
+        }
+        
+        setupLocation()
+        fetchLocations()
+    }
+    
+    @available(iOS 12.0, *)
+    private func setupInitScheme() {
+        switch UIScreen.main.traitCollection.userInterfaceStyle {
+        case .dark:
+            print("init with dark")
+            activateDarkScheme()
+        case .light:
+            print("init with light")
+        default:
+            print("init with default")
+        }
+    }
+    
+    private func activateDarkScheme() {
+        do {
+            if let styleURL = Bundle.main.url(forResource: Settings.GoogleMapsColorSchemes.dark, withExtension: "json") {
+                mainView.mapView.mapStyle = try GMSMapStyle(contentsOfFileURL: styleURL)
+            }
+        } catch let error {
+            print(error.localizedDescription)
+        }
     }
     
     private func setupLocation() {
@@ -43,22 +86,41 @@ class MainScreenViewController: UIViewController {
             case .failure(let error):
                 print(error.localizedDescription)
             case .success(let data):
-                print(data)
                 let decoder = JSONDecoder()
                 do {
                     let object = try decoder.decode(Users.self, from: data)
-                    print("Items in JSON: \(object.count)")
+                    object.forEach { [weak self] in
+                        let user = User(
+                            idClient: $0.idClient,
+                            idClientAccount: $0.idClientAccount,
+                            clientCode: $0.clientCode,
+                            latitude: $0.latitude,
+                            longitude: $0.longitude,
+                            avatarHash: $0.avatarHash,
+                            statusOnline: $0.statusOnline
+                        )
+                        self?.dataSource.append(user)
+                    }
+                    self.addMarkers(with: self.dataSource)
                 } catch let error {
                     print(error.localizedDescription)
                 }
             }
         }
     }
-
-    init(
-        networkService: NetworkService,
-        mapsService: MapsService
-    ) {
+    
+    private func addMarkers(with user: Users) {
+        DispatchQueue.main.async {
+            user.forEach { [weak self] (item) in
+                let marker = GMSMarker()
+                marker.position = CLLocationCoordinate2D(latitude: item.latitude, longitude: item.longitude)
+                marker.title = item.clientCode
+                marker.map = self?.mainView.mapView
+            }
+        }
+    }
+    
+    init(networkService: NetworkService, mapsService: MapsService) {
         self.networkService = networkService
         self.mapsService = mapsService
         super.init(nibName: nil, bundle: nil)
@@ -71,5 +133,16 @@ class MainScreenViewController: UIViewController {
 }
 
 extension MainScreenViewController: CLLocationManagerDelegate {
+    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+        guard status == .authorizedWhenInUse else { return }
+        locationManager.startUpdatingLocation()
+        mainView.mapView.isMyLocationEnabled = true
+        mainView.mapView.settings.myLocationButton = true
+    }
     
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        guard let location = locations.first else { return }
+        mainView.mapView.camera = GMSCameraPosition(target: location.coordinate, zoom: 15, bearing: 0, viewingAngle: 0)
+        locationManager.stopUpdatingLocation()
+    }
 }

@@ -7,10 +7,15 @@
 //
 
 import UIKit
+import GoogleMaps
 
 class MainScreenView: UIView {
     
-    lazy var mapView = MapView(frame: .zero)
+    lazy var mapView: GMSMapView = {
+        let view = GMSMapView(frame: .zero)
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
     
     override init(frame: CGRect) {
         super.init(frame: frame)

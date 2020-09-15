@@ -21,7 +21,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             let rootVC = ScreenAssemblyImplementation.assemblyMainScreen()
             window = UIWindow()
             window?.bounds = UIScreen.main.bounds
-            window?.rootViewController = UINavigationController(rootViewController: rootVC)
+            window?.rootViewController = rootVC
             window?.makeKeyAndVisible()
         }
         
