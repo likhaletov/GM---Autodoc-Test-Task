@@ -75,6 +75,40 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		AA17D2E2251041D3000CD90B /* MainScreen */ = {
+			isa = PBXGroup;
+			children = (
+				AA17D2E5251041EC000CD90B /* Model */,
+				AA17D2E3251041E0000CD90B /* View */,
+				AA17D2E4251041E6000CD90B /* Controller */,
+			);
+			path = MainScreen;
+			sourceTree = "<group>";
+		};
+		AA17D2E3251041E0000CD90B /* View */ = {
+			isa = PBXGroup;
+			children = (
+				AA4E2CF025101536007B919B /* MainScreenView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		AA17D2E4251041E6000CD90B /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				AA4E2CCC250FDAC5007B919B /* MainScreenViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		AA17D2E5251041EC000CD90B /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				AA4E2CE0250FEFBA007B919B /* Model.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		AA4E2CBC250FDAC4007B919B = {
 			isa = PBXGroup;
 			children = (
@@ -98,16 +132,14 @@
 			children = (
 				AA4E2CC8250FDAC5007B919B /* AppDelegate.swift */,
 				AA4E2CCA250FDAC5007B919B /* SceneDelegate.swift */,
-				AA4E2CCC250FDAC5007B919B /* MainScreenViewController.swift */,
-				AA4E2CF025101536007B919B /* MainScreenView.swift */,
 				AA4E2CE6250FF8C8007B919B /* ScreenAssembly.swift */,
-				AA4E2CE0250FEFBA007B919B /* Model.swift */,
 				AA4E2CDC250FDBD7007B919B /* Settings.swift */,
+				AA4E2CE3250FF5A0007B919B /* Services */,
+				AA17D2E2251041D3000CD90B /* MainScreen */,
 				AA4E2CD6250FDAC7007B919B /* Info.plist */,
 				AA4E2CD1250FDAC7007B919B /* Assets.xcassets */,
 				AA4E2CF22510325E007B919B /* gmsDarkStyle.json */,
 				AA4E2CD3250FDAC7007B919B /* LaunchScreen.storyboard */,
-				AA4E2CE3250FF5A0007B919B /* Services */,
 			);
 			path = "GM - Autodoc Test Task";
 			sourceTree = "<group>";

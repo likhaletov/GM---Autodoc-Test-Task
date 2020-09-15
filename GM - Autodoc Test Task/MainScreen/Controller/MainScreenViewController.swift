@@ -9,21 +9,33 @@
 import UIKit
 import CoreLocation
 import GoogleMaps
+import GoogleMapsUtils
 
 class MainScreenViewController: UIViewController {
     
     private let networkService: NetworkService
     private let mapsService: MapsService
     private let locationManager = CLLocationManager()
+    private var clusterManager: GMUClusterManager? = nil
     
     private let mainView = MainScreenView()
     
-    private var dataSource: Users = []
+    private var userDataSource: [PointOfUser] = []
     
     override func loadView() {
         view = mainView
     }
     
+    // MARK: - ViewController Lifecycle Methods
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        if #available(iOS 12.0, *) { setupInitScheme() }
+        fetchLocations()
+        setupLocation()
+    }
+    
+    // MARK: - Dark Scheme
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
         super.traitCollectionDidChange(previousTraitCollection)
         
@@ -38,17 +50,6 @@ class MainScreenViewController: UIViewController {
                 mainView.mapView.mapStyle = nil
             }
         }
-    }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        if #available(iOS 12.0, *) {
-            setupInitScheme()
-        }
-        
-        setupLocation()
-        fetchLocations()
     }
     
     @available(iOS 12.0, *)
@@ -74,11 +75,13 @@ class MainScreenViewController: UIViewController {
         }
     }
     
+    // MARK: - Setup Core Location
     private func setupLocation() {
         locationManager.delegate = self
         locationManager.requestWhenInUseAuthorization()
     }
     
+    // MARK: - Parsing JSON, creating user objects
     private func fetchLocations() {
         guard let url = URL(string: Settings.api) else { return }
         networkService.getData(fromURL: url) { (response) in
@@ -90,18 +93,14 @@ class MainScreenViewController: UIViewController {
                 do {
                     let object = try decoder.decode(Users.self, from: data)
                     object.forEach { [weak self] in
-                        let user = User(
-                            idClient: $0.idClient,
-                            idClientAccount: $0.idClientAccount,
-                            clientCode: $0.clientCode,
-                            latitude: $0.latitude,
-                            longitude: $0.longitude,
-                            avatarHash: $0.avatarHash,
-                            statusOnline: $0.statusOnline
+                        let userPointsOfInterest = PointOfUser(
+                            position: CLLocationCoordinate2D(latitude: $0.latitude, longitude: $0.longitude),
+                            name: $0.clientCode
                         )
-                        self?.dataSource.append(user)
+                        
+                        self?.userDataSource.append(userPointsOfInterest)
                     }
-                    self.addMarkers(with: self.dataSource)
+                    self.setupClustering(with: self.userDataSource)
                 } catch let error {
                     print(error.localizedDescription)
                 }
@@ -109,17 +108,29 @@ class MainScreenViewController: UIViewController {
         }
     }
     
-    private func addMarkers(with user: Users) {
+    // MARK: - Clustering
+    private func setupClustering(with poi: [PointOfUser]) {
         DispatchQueue.main.async {
-            user.forEach { [weak self] (item) in
-                let marker = GMSMarker()
-                marker.position = CLLocationCoordinate2D(latitude: item.latitude, longitude: item.longitude)
-                marker.title = item.clientCode
-                marker.map = self?.mainView.mapView
-            }
+            let mapView = self.mainView.mapView
+            
+            let iconGenerator = GMUDefaultClusterIconGenerator()
+            let algorithm = GMUGridBasedClusterAlgorithm()
+            let renderer = GMUDefaultClusterRenderer(mapView: mapView, clusterIconGenerator: iconGenerator)
+            
+            self.clusterManager = GMUClusterManager(
+                map: mapView,
+                algorithm: algorithm,
+                renderer: renderer
+            )
+            
+            self.mainView.mapView.clear()
+            self.clusterManager?.add(poi)
+            self.clusterManager?.cluster()
+            self.clusterManager?.setMapDelegate(self)
         }
     }
     
+    // MARK: - Initializer
     init(networkService: NetworkService, mapsService: MapsService) {
         self.networkService = networkService
         self.mapsService = mapsService
@@ -132,17 +143,24 @@ class MainScreenViewController: UIViewController {
     
 }
 
+// MARK: - Core Location Manager Delegate
 extension MainScreenViewController: CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
-        guard status == .authorizedWhenInUse else { return }
-        locationManager.startUpdatingLocation()
-        mainView.mapView.isMyLocationEnabled = true
-        mainView.mapView.settings.myLocationButton = true
+        if status == .authorizedWhenInUse {
+            locationManager.startUpdatingLocation()
+            mainView.mapView.isMyLocationEnabled = true
+            mainView.mapView.settings.myLocationButton = true
+        }
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         guard let location = locations.first else { return }
-        mainView.mapView.camera = GMSCameraPosition(target: location.coordinate, zoom: 15, bearing: 0, viewingAngle: 0)
+        mainView.mapView.camera = GMSCameraPosition(target: location.coordinate, zoom: 9, bearing: 0, viewingAngle: 0)
         locationManager.stopUpdatingLocation()
     }
+}
+
+// MARK: - Google Maps Map Delegate
+extension MainScreenViewController: GMSMapViewDelegate {
+    
 }
