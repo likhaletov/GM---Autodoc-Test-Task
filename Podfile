@@ -7,4 +7,5 @@ target 'GM - Autodoc Test Task' do
 
   # Pods for GM - Autodoc Test Task
   pod 'GoogleMaps', '3.10.0'
+  pod 'Google-Maps-iOS-Utils', '~> 3.3.0'
 end
