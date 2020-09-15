@@ -14,7 +14,6 @@ import GoogleMapsUtils
 class MainScreenViewController: UIViewController {
     
     private let networkService: NetworkService
-    private let mapsService: MapsService
     private let locationManager = CLLocationManager()
     private var clusterManager: GMUClusterManager? = nil
     
@@ -78,6 +77,7 @@ class MainScreenViewController: UIViewController {
     // MARK: - Setup Core Location
     private func setupLocation() {
         locationManager.delegate = self
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.requestWhenInUseAuthorization()
     }
     
@@ -131,9 +131,8 @@ class MainScreenViewController: UIViewController {
     }
     
     // MARK: - Initializer
-    init(networkService: NetworkService, mapsService: MapsService) {
+    init(networkService: NetworkService) {
         self.networkService = networkService
-        self.mapsService = mapsService
         super.init(nibName: nil, bundle: nil)
     }
     

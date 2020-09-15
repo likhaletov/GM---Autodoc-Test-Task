@@ -14,17 +14,9 @@ protocol ScreenAssembly: AnyObject {
 
 class ScreenAssemblyImplementation: ScreenAssembly {
     static func assemblyMainScreen() -> UIViewController {
-        
         let networkService = NetworkServiceImplementation()
-        let mapsService = MapsServiceImplementation()
-        
-        let viewController = MainScreenViewController(
-            networkService: networkService,
-            mapsService: mapsService
-        )
+        let viewController = MainScreenViewController(networkService: networkService)
         viewController.title = "Autodoc test task"
-        
         return viewController
-        
     }
 }

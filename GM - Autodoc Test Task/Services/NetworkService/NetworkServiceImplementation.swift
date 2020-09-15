@@ -13,8 +13,7 @@ class NetworkServiceImplementation: NetworkService {
     func getData(fromURL url: URL, completionHandler: @escaping ((Result<Data, Error>) -> Void)) {
         let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
             
-            guard let data = data,
-                let response = response else { return }
+            guard let data = data, let _ = response else { return }
             
             if let error = error {
                 completionHandler(.failure(error))

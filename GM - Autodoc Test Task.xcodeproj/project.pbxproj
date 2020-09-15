@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		90437771217519159403F6A8 /* Pods_GM___Autodoc_Test_Task.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FE6884C7A8ADE5C34905EE17 /* Pods_GM___Autodoc_Test_Task.framework */; };
+		AA17D2E7251062B9000CD90B /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA17D2E6251062B9000CD90B /* UserModel.swift */; };
 		AA4E2CC9250FDAC5007B919B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA4E2CC8250FDAC5007B919B /* AppDelegate.swift */; };
 		AA4E2CCB250FDAC5007B919B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA4E2CCA250FDAC5007B919B /* SceneDelegate.swift */; };
 		AA4E2CCD250FDAC5007B919B /* MainScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA4E2CCC250FDAC5007B919B /* MainScreenViewController.swift */; };
@@ -18,14 +19,13 @@
 		AA4E2CE1250FEFBA007B919B /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA4E2CE0250FEFBA007B919B /* Model.swift */; };
 		AA4E2CE5250FF7A7007B919B /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA4E2CE4250FF7A7007B919B /* NetworkService.swift */; };
 		AA4E2CE7250FF8C8007B919B /* ScreenAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA4E2CE6250FF8C8007B919B /* ScreenAssembly.swift */; };
-		AA4E2CEA25100F29007B919B /* MapsServiceImplementation.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA4E2CE925100F29007B919B /* MapsServiceImplementation.swift */; };
-		AA4E2CEC25100F31007B919B /* MapsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA4E2CEB25100F31007B919B /* MapsService.swift */; };
 		AA4E2CF125101536007B919B /* MainScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA4E2CF025101536007B919B /* MainScreenView.swift */; };
 		AA4E2CF32510325F007B919B /* gmsDarkStyle.json in Resources */ = {isa = PBXBuildFile; fileRef = AA4E2CF22510325E007B919B /* gmsDarkStyle.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		02B0174EA1EF5FE8277AF50A /* Pods-GM - Autodoc Test Task.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GM - Autodoc Test Task.release.xcconfig"; path = "Target Support Files/Pods-GM - Autodoc Test Task/Pods-GM - Autodoc Test Task.release.xcconfig"; sourceTree = "<group>"; };
+		AA17D2E6251062B9000CD90B /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		AA4E2CC5250FDAC5007B919B /* GM - Autodoc Test Task.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "GM - Autodoc Test Task.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AA4E2CC8250FDAC5007B919B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AA4E2CCA250FDAC5007B919B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -38,8 +38,6 @@
 		AA4E2CE0250FEFBA007B919B /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		AA4E2CE4250FF7A7007B919B /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		AA4E2CE6250FF8C8007B919B /* ScreenAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenAssembly.swift; sourceTree = "<group>"; };
-		AA4E2CE925100F29007B919B /* MapsServiceImplementation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapsServiceImplementation.swift; sourceTree = "<group>"; };
-		AA4E2CEB25100F31007B919B /* MapsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapsService.swift; sourceTree = "<group>"; };
 		AA4E2CF025101536007B919B /* MainScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreenView.swift; sourceTree = "<group>"; };
 		AA4E2CF22510325E007B919B /* gmsDarkStyle.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = gmsDarkStyle.json; sourceTree = "<group>"; };
 		C67DF91BA4D891ECC29AB2DA /* Pods-GM - Autodoc Test Task.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GM - Autodoc Test Task.debug.xcconfig"; path = "Target Support Files/Pods-GM - Autodoc Test Task/Pods-GM - Autodoc Test Task.debug.xcconfig"; sourceTree = "<group>"; };
@@ -105,8 +103,19 @@
 			isa = PBXGroup;
 			children = (
 				AA4E2CE0250FEFBA007B919B /* Model.swift */,
+				AA17D2E6251062B9000CD90B /* UserModel.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		AA17D2EA25106545000CD90B /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				AA4E2CD1250FDAC7007B919B /* Assets.xcassets */,
+				AA4E2CF22510325E007B919B /* gmsDarkStyle.json */,
+				AA4E2CD3250FDAC7007B919B /* LaunchScreen.storyboard */,
+			);
+			path = "Supporting Files";
 			sourceTree = "<group>";
 		};
 		AA4E2CBC250FDAC4007B919B = {
@@ -134,12 +143,10 @@
 				AA4E2CCA250FDAC5007B919B /* SceneDelegate.swift */,
 				AA4E2CE6250FF8C8007B919B /* ScreenAssembly.swift */,
 				AA4E2CDC250FDBD7007B919B /* Settings.swift */,
-				AA4E2CE3250FF5A0007B919B /* Services */,
 				AA17D2E2251041D3000CD90B /* MainScreen */,
+				AA4E2CE3250FF5A0007B919B /* Services */,
+				AA17D2EA25106545000CD90B /* Supporting Files */,
 				AA4E2CD6250FDAC7007B919B /* Info.plist */,
-				AA4E2CD1250FDAC7007B919B /* Assets.xcassets */,
-				AA4E2CF22510325E007B919B /* gmsDarkStyle.json */,
-				AA4E2CD3250FDAC7007B919B /* LaunchScreen.storyboard */,
 			);
 			path = "GM - Autodoc Test Task";
 			sourceTree = "<group>";
@@ -148,7 +155,6 @@
 			isa = PBXGroup;
 			children = (
 				AA4E2CE825100F00007B919B /* NetworkService */,
-				AA4E2CED25100F5D007B919B /* MapsService */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -160,15 +166,6 @@
 				AA4E2CE4250FF7A7007B919B /* NetworkService.swift */,
 			);
 			path = NetworkService;
-			sourceTree = "<group>";
-		};
-		AA4E2CED25100F5D007B919B /* MapsService */ = {
-			isa = PBXGroup;
-			children = (
-				AA4E2CE925100F29007B919B /* MapsServiceImplementation.swift */,
-				AA4E2CEB25100F31007B919B /* MapsService.swift */,
-			);
-			path = MapsService;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -290,12 +287,11 @@
 				AA4E2CCD250FDAC5007B919B /* MainScreenViewController.swift in Sources */,
 				AA4E2CC9250FDAC5007B919B /* AppDelegate.swift in Sources */,
 				AA4E2CE1250FEFBA007B919B /* Model.swift in Sources */,
-				AA4E2CEA25100F29007B919B /* MapsServiceImplementation.swift in Sources */,
 				AA4E2CDD250FDBD7007B919B /* Settings.swift in Sources */,
 				AA4E2CF125101536007B919B /* MainScreenView.swift in Sources */,
-				AA4E2CEC25100F31007B919B /* MapsService.swift in Sources */,
 				AA4E2CCB250FDAC5007B919B /* SceneDelegate.swift in Sources */,
 				AA4E2CE5250FF7A7007B919B /* NetworkService.swift in Sources */,
+				AA17D2E7251062B9000CD90B /* UserModel.swift in Sources */,
 				AA4E2CE7250FF8C8007B919B /* ScreenAssembly.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
